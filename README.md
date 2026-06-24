@@ -49,3 +49,41 @@ You can download models directly from Hugging Face into your workspace. For exam
 hf download Qwen/Qwen3-8B --local-dir $WORK/project/Qwen3-8B
 
 *If you need to download a different model, simply replace `Qwen/Qwen3-8B` and the target directory with the name of the desired model.*
+
+## 6. Tracking Fine-Tuning Metrics
+
+The project utilizes a hidden file named `.mlflow_cr`. This file is used to save all fine-tuning metrics and artifacts directly to the database so that they can be successfully loaded and reviewed later.
+
+
+## 7. Useful SLURM & System Commands
+
+### Job Management
+
+* **Submit a job:**
+    sbatch submit.sh
+
+* **Check job status:**
+    squeue -u $USER
+    *(Key: `R` = Running, `PD` = Pending)*
+
+* **Check job output and logs:**
+    First, use `ll -a` to see your directory contents and locate the `slurm-XXX.out` file.
+    * To view the entire log: `cat slurm-XXX.out`
+    * To monitor logs in real-time: `tail -f slurm-XXX.out`
+
+* **Cancel a submission:**
+    scancel JOB_ID
+
+
+### File Deletion
+
+> **WARNING:** There is no "trash bin" on this system. Files deleted using the following commands are removed completely without the possibility of restoring them. Be careful!
+
+* **Delete all SLURM log files:**
+    rm slurm-*.out
+
+* **Delete a folder and its contents:**
+    rm -r folder_name
+
+* **Delete a database (force remove):**
+    rm -f database_name
