@@ -1,0 +1,1 @@
+export MLFLOW_TRACKING_URI="sqlite:///$WORK/project/mlflow.db"
