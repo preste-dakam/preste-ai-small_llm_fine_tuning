@@ -180,6 +180,8 @@ def objective(trial):
             dataset_text_field="text",
             max_length=4096,
             eval_strategy="epoch", 
+            save_strategy="epoch",
+            save_total_limit=2, # Only keeps the 2 most recent epochs to save hard drive space
             learning_rate=lr,
             per_device_train_batch_size=batch_size,
             num_train_epochs=epochs,
